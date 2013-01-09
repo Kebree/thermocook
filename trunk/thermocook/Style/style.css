@@ -1,0 +1,52 @@
+#recipeBody {
+	font-weight : normal;
+	font-size : 13pt;
+}
+
+#recipeBody p {
+	margin : 10px 0 0 0;
+}
+
+strong {
+	font-weight : bold;	
+}
+
+.recH1 {
+	font-size: 20pt;
+	margin-bottom: 15px;
+	color: #136CB4;
+}
+
+#recipeBody h2 {
+	font-size: 16pt;
+}
+
+.ingTable {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #136CB4;
+}
+
+.ingName {
+	width: 20em;
+	color: #136CB4;
+}
+
+.ingQuant {
+	text-align: center;
+	color: #136CB4;
+}
+
+#recText {
+	margin-top : 20px;	
+}
+
+#recText ol {
+	margin-left : 15px;
+	list-style-type: decimal;
+}
+
+#recText ul {
+	margin-left : 15px;
+	list-style-type: circle;
+}
