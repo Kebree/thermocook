@@ -1,0 +1,62 @@
+.body {
+    padding : 20px;
+}
+
+div {
+    margin : 0px;
+}
+
+.error {
+    color : red;
+    font: normal 10px 'Helvetica Neue', Arial, Verdana, sans-serif;
+    text-shadow: white 0px 1px 0px;
+    margin-bottom : 20px;
+}
+
+.btn {
+    border-radius: 3px;
+    padding: 5px 15px 5px 15px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #1369AE;
+    background-image: -webkit-linear-gradient(top, #2591E8, #1574C0 3%, #115D9B);
+    color : white;
+    font-size : 12px;
+    font-family: 'Helvetica Neue', Arial, Verdana, sans-serif;
+    font-weight : bold;
+    border-color: #093152;
+    cursor: pointer;
+}
+
+.btn:focus {
+    background-color: #0E4D80;
+}
+
+.labl {
+    font: normal 12px 'Helvetica Neue', Arial, Verdana, sans-serif;
+    text-shadow: white 0px 1px 0px;
+    width : 105px;
+    float : left;
+}
+
+.field input {
+    margin : -5px;
+    font: normal 12px 'Helvetica Neue', Arial, Verdana, sans-serif;
+    color: #22262A;
+    padding: 1px 3px;
+    background: 0px 0px repeat-x white;
+    border: 1px solid;
+    border-color: #BEC0C0 #E0E1E2 #E0E1E2 #E0E1E2;
+}
+
+input:focus {
+    background-color : #FFEDE9;
+    border-color: #BEAAA3 #DFCCC5 #DFCCC5 #DFCCC5;
+}
+
+h1 {
+    font-family: 'Helvetica Neue', Arial, Verdana, sans-serif;
+    font-size: 18pt;
+    margin-bottom: 15px;
+    color: #136CB4;
+}

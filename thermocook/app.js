@@ -1,3 +1,5 @@
+
+
 Ext.Loader.setConfig({
 	enabled : true,
     'paths': {
@@ -9,7 +11,7 @@ Ext.Loader.setConfig({
 Ext.require(['Ext.grid.*', 'Ext.data.*', 'Ext.ux.grid.FiltersFeature', 'Ext.ux.form.field.TinyMCE', 'Ext.toolbar.Paging', 'Ext.dd.*']);
 
 mainPanel = Ext.create('Ext.panel.Panel', {
-	title : 'truc',
+	title : 'Bienvenue '+username,
 	margin : 5,
 	html : 'welcome !'
 })
@@ -169,7 +171,19 @@ Ext.application({
 								handler : newListHandler
 							}]
 						}
-					}]
+					},{
+                        text : 'Compte',
+                        menu : {
+                            xtype : 'menu',
+                            items : [{
+                                text : 'Mon compte'/*,
+                                handler : viewRecipeHandler*/
+                            }, {
+                                text : 'Logout',
+                                href : 'logout.php'
+                            }]
+                        }
+                    }]
 				}, {
 					xtype : 'panel',
 					region : 'center',
