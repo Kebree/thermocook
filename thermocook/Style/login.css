@@ -13,7 +13,45 @@ div {
     margin-bottom : 20px;
 }
 
+.info {
+    color : green;
+    font: normal 10px 'Helvetica Neue', Arial, Verdana, sans-serif;
+    text-shadow: white 0px 1px 0px;
+    margin-bottom : 20px;
+}
+
+#gauche {
+    border-color: #1369AE;
+    border-style: solid;
+    border-width : 1px;
+    padding : 10px 50px 10px 50px;
+    float: left;
+    margin : 10px;
+    width : 400px;
+}
+
+#droite {
+    border-color: #1369AE;
+    border-style: solid;
+    border-width : 1px;
+    padding : 10px 50px 10px 50px;
+    float: left;
+    margin : 10px;
+    width : 400px;
+}
+
+#droite h1 {
+    text-decoration : underline;
+    cursor : pointer;
+}
+
+
+#scrolling {
+    display : none;
+}
+
 .btn {
+    margin-top : 25px;
     border-radius: 3px;
     padding: 5px 15px 5px 15px;
     border-width: 1px;
@@ -37,10 +75,11 @@ div {
     text-shadow: white 0px 1px 0px;
     width : 105px;
     float : left;
+    margin-top : 10px;
 }
 
 .field input {
-    margin : -5px;
+    margin-top : 5px;
     font: normal 12px 'Helvetica Neue', Arial, Verdana, sans-serif;
     color: #22262A;
     padding: 1px 3px;
