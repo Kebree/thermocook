@@ -34,9 +34,7 @@ if(isset($_POST['newuser'])) {
 
     if (!$resp->is_valid) {
     // What happens when the CAPTCHA was entered incorrectly
-    $error .= "invalid captcha";
-    die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-        "(reCAPTCHA said: " . $resp->error . ")");
+    	$error .= "invalid captcha";
     }
     
     unset($result);
