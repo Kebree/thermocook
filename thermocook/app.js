@@ -10,11 +10,6 @@ Ext.Loader.setConfig({
 
 Ext.require(['Ext.grid.*', 'Ext.data.*', 'Ext.ux.grid.FiltersFeature', 'Ext.ux.form.field.TinyMCE', 'Ext.toolbar.Paging', 'Ext.dd.*']);
 
-mainPanel = Ext.create('Ext.panel.Panel', {
-	title : 'Bienvenue '+username,
-	margin : 5,
-	html : 'welcome !'
-})
 
 function setDefault() {
 	center = Ext.getCmp('centerPanel');
@@ -116,7 +111,12 @@ recEditID = null;
 
 Ext.application({
 	name : 'thermocook',
-	controllers : ['thermocook.List.Controller.ListControll', 'thermocook.ViewIngredients.Controll.IngredientListControll', 'thermocook.ViewIngredients.Controller.ContextMenuControll', 'thermocook.Recipes.Controller.RecipesListControll', 'thermocook.Recipes.Controller.IngsControll'],
+	controllers : ['thermocook.List.Controller.ListControll', 
+	   'thermocook.ViewIngredients.Controll.IngredientListControll', 
+	   'thermocook.ViewIngredients.Controller.ContextMenuControll', 
+	   'thermocook.Recipes.Controller.RecipesListControll', 
+	   'thermocook.Recipes.Controller.IngsControll', 
+       'thermocook.Main.Controller.LastRectControll'],
 	launch : function() {
 
 		Ext.EventManager.addListener(Ext.getBody(), 'keydown', function(e) {
