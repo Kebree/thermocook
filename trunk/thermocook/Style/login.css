@@ -74,8 +74,12 @@ div {
     font: normal 12px 'Helvetica Neue', Arial, Verdana, sans-serif;
     text-shadow: white 0px 1px 0px;
     width : 105px;
-    float : left;
     margin-top : 10px;
+    float : left;
+}
+
+.formGroup {
+    margin : 2px;
 }
 
 .field input {

@@ -1,9 +1,10 @@
 Ext.define('thermocook.Main.View.LastRecipesList', {
-    title : 'Dernières recettes',
+    title : false,
     extend : 'Ext.grid.Panel',
     alias : 'widget.lastRectGrid',
     flex : 1,
     columns : [{
+        header : 'Dernières recettes',
         dataIndex : 'name',
         flex : 1
     }],

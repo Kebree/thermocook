@@ -186,6 +186,7 @@ Ext.application({
                     }]
 				}, {
 					xtype : 'panel',
+                    autoScroll : true,
 					region : 'center',
 					id : 'centerPanel',
 					items : mainPanel
