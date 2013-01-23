@@ -43,6 +43,7 @@
 
         <!-- View -->
 
+        <script type="text/javascript" src="thermocook/Main/View/Favourite.js"></script>
         <script type="text/javascript" src="thermocook/Main/View/LastRecipesList.js"></script>
         <script type="text/javascript" src="thermocook/Main/View/MainPanelView.js"></script>
         <script type="text/javascript" src="thermocook/AddIngredient/View/MainView.js"></script>
