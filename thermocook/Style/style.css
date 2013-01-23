@@ -21,6 +21,14 @@ strong {
 	font-size: 16pt;
 }
 
+.rounded {
+    border-radius: 10px;
+    border-color: #1369AE;
+    border-style: solid;
+    border-width : 1px;
+    padding : 5px;
+}
+
 .ingTable {
 	margin-top: 20px;
 	margin-bottom: 20px;

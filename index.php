@@ -9,10 +9,12 @@ function authenticate($login, $password) {
     global $connec;
     $query = sprintf("SELECT * FROM users WHERE login='%s' and password='%s'", $login, $password);
     $result = $connec -> executeQuery($query);
-    if(mysql_num_rows($result)==1)
-        return true;
+    if(mysql_num_rows($result)==1){
+        $row = mysql_fetch_assoc($result);
+        return $row['id'];
+    }
     $error = "Login ou mot de passe non valide";
-    return false;
+    return -1;
 }
 
 if(isset($_POST['newuser'])) {
@@ -52,9 +54,11 @@ if(isset($_POST['newuser'])) {
  
 if(isset($_POST["username"]))
 {
-    if(authenticate($_POST["username"], $_POST["password"]))
+    $id = authenticate($_POST["username"], $_POST["password"]);
+    if($id>0)
     {
         $_SESSION["username"] = $_POST["username"];
+        $_SESSION['userid'] = $id;
     }
 }
 if(isset($_SESSION['username'])) {
@@ -195,17 +199,21 @@ if(isset($_SESSION['username'])) {
             <h1>Login</h1>
             
             <form action="index.php" method="post" onsubmit='encPass(this)'>
-                <div class="labl">
-                    <label>Username : </label>
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Username : </label>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="username" value=""/>
+                    </div>
                 </div>
-                <div class="field">
-                    <input type="text" name="username" value=""/>
-                </div>
-                <div class="labl">
-                    <label>Password : </label>
-                </div>
-                <div class="field">
-                    <input type="password" name="password" />
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Password : </label>
+                    </div>
+                    <div class="field">
+                        <input type="password" name="password" />
+                    </div>
                 </div>
                 <div>
                     <input type="submit" value="Valider" class="btn" />
@@ -225,41 +233,53 @@ if(isset($_SESSION['username'])) {
         <div id="droite">
             <h1 onclick="displayForm()"> Pas encore inscrit ? </h1>
             <form action="index.php" method="post" onsubmit='return validateForm()' id="scrolling">
-                <div class="labl">
-                    <label>Identifiant : </label>
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Identifiant : </label>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="newuser" onchange="validField(this)" value=""/>
+                    </div>
                 </div>
-                <div class="field">
-                    <input type="text" name="newuser" onchange="validField(this)" value=""/>
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Mot de passe : </label>
+                    </div>
+                    <div class="field">
+                        <input type="password" onchange="validField(this)" name="newpassword" />
+                    </div>
                 </div>
-                <div class="labl">
-                    <label>Mot de passe : </label>
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Vérification : </label>
+                    </div>
+                    <div class="field">
+                        <input type="password" onchange="validField(this)" name="newpasswordbis" />
+                    </div>
                 </div>
-                <div class="field">
-                    <input type="password" onchange="validField(this)" name="newpassword" />
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>e-mail : </label>
+                    </div>
+                    <div class="field">
+                        <input type="text" onchange="validField(this)" name="mail" />
+                    </div>
                 </div>
-                <div class="labl">
-                    <label>Vérification : </label>
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Prénom : </label>
+                    </div>
+                    <div class="field">
+                        <input type="text" onchange="validField(this)" name="firstname" />
+                    </div>
                 </div>
-                <div class="field">
-                    <input type="password" onchange="validField(this)" name="newpasswordbis" />
-                </div>
-                <div class="labl">
-                    <label>e-mail : </label>
-                </div>
-                <div class="field">
-                    <input type="text" onchange="validField(this)" name="mail" />
-                </div>
-                <div class="labl">
-                    <label>Prénom : </label>
-                </div>
-                <div class="field">
-                    <input type="text" onchange="validField(this)" name="firstname" />
-                </div>
-                <div class="labl">
-                    <label>Nom : </label>
-                </div>
-                <div class="field">
-                    <input type="text" onchange="validField(this)" name="name" />
+                <div class="formGroup">
+                    <div class="labl">
+                        <label>Nom : </label>
+                    </div>
+                    <div class="field">
+                        <input type="text" onchange="validField(this)" name="name" />
+                    </div>
                 </div>
                 <div class="field" style="margin-top: 20px;">
                     <?php
