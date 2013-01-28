@@ -1,5 +1,3 @@
-
-
 Ext.Loader.setConfig({
 	enabled : true,
     'paths': {
@@ -10,18 +8,8 @@ Ext.Loader.setConfig({
 
 Ext.require(['Ext.grid.*', 'Ext.data.*', 'Ext.ux.grid.FiltersFeature', 'Ext.ux.form.field.TinyMCE', 'Ext.toolbar.Paging', 'Ext.dd.*']);
 
-
-function setDefault() {
-	center = Ext.getCmp('centerPanel');
-	center.removeAll(true);
-	center.update('');
-	center.add({
-		title : 'truc',
-		margin : 5,
-		html : 'welcome !'
-	});
-	center.doLayout();
-
+function accueilButtonClckd() {
+    window.location.reload();
 }
 
 function addRecipeHandler(recID) {
@@ -107,6 +95,62 @@ function utf8_decode(str_data) {
 	return tmp_arr.join('');
 }
 
+
+
+function unfavorite(id, isMain) {
+    isMain = typeof isMain !== 'undefined' ? isMain : false;
+    var mygetrequest = new XMLHttpRequest();
+    var ret = "";
+    mygetrequest.onreadystatechange = function() {
+        if (mygetrequest.readyState == 4) {
+            if (mygetrequest.status == 200 || window.location.href.indexOf("http") == -1) {
+                ret = mygetrequest.responseText
+            } else {
+                alert("An error has occured making the request")
+            }
+        }
+    };
+    mygetrequest.open("GET", "thermocook/lib/tc/Service.php?function=rmFav&id=" + id, false)
+    mygetrequest.send(null);
+    
+    if(isMain) {
+        favRequest.open("GET", "/thermocook/lib/tc/getFavs.php", false);
+        favRequest.send();
+        Ext.getCmp('favList').removeAll();
+        Ext.getCmp('favList').add(Ext.JSON.decode(favList));
+    } else {
+        button = Ext.getCmp('favButton');
+        parent = button.up();
+        parent.removeAll();
+        button = Ext.create('thermocook.Recipes.View.addToFavButton');
+        button.on({click : Ext.bind(favorite, this, [id])});
+        parent.add(button);     
+    }
+};
+
+function favorite(id) {
+    var mygetrequest = new XMLHttpRequest();
+    var ret = "";
+    mygetrequest.onreadystatechange = function() {
+        if (mygetrequest.readyState == 4) {
+            if (mygetrequest.status == 200 || window.location.href.indexOf("http") == -1) {
+                ret = mygetrequest.responseText
+            } else {
+                alert("An error has occured making the request")
+            }
+        }
+    };
+    mygetrequest.open("GET", "thermocook/lib/tc/Service.php?function=addFav&id=" + id, false)
+    mygetrequest.send(null);
+    
+    button = Ext.getCmp('favButton');
+    parent = button.up();
+    parent.removeAll();
+    button = Ext.create('thermocook.Recipes.View.rmFromFavButton');
+    button.on({click : Ext.bind(unfavorite, this, [id])});
+    parent.add(button);
+};
+
 recEditID = null;
 
 Ext.application({
@@ -115,10 +159,9 @@ Ext.application({
 	   'thermocook.ViewIngredients.Controll.IngredientListControll', 
 	   'thermocook.ViewIngredients.Controller.ContextMenuControll', 
 	   'thermocook.Recipes.Controller.RecipesListControll', 
-	   'thermocook.Recipes.Controller.IngsControll', 
+	   'thermocook.Recipes.Controller.IngsControll',
        'thermocook.Main.Controller.LastRectControll'],
 	launch : function() {
-
 		Ext.EventManager.addListener(Ext.getBody(), 'keydown', function(e) {
 			if (e.getTarget().type != 'text' && e.getKey() == '8') {
 				e.preventDefault();
@@ -134,7 +177,10 @@ Ext.application({
 				items : [{
 					xtype : 'toolbar',
 					region : 'north',
-					items : [{
+					items : [ {
+					    text : 'Accueil',
+					    handler : accueilButtonClckd
+					},{
 						text : 'Recettes',
 						menu : {
 							xtype : 'menu',
@@ -189,7 +235,7 @@ Ext.application({
                     autoScroll : true,
 					region : 'center',
 					id : 'centerPanel',
-					items : mainPanel
+					items : [{ xtype : 'mainPanel' }]
 				}]
 			}]
 		});

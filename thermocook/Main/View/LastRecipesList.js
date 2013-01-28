@@ -8,5 +8,7 @@ Ext.define('thermocook.Main.View.LastRecipesList', {
         dataIndex : 'name',
         flex : 1
     }],
-    store : Ext.create('thermocook.Main.Store.LastRectStore')
+    store : Ext.create('thermocook.Main.Store.LastRectStore'),
+    trackMouseOver: false,
+    disableSelection: true
 })

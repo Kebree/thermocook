@@ -27,10 +27,20 @@ Ext.define('thermocook.Recipes.View.ViewMainView', {
             xtype : 'panel',
             autoScroll : true,
             id : 'rightRecipe',
+            title : false,
             margin : '30 0 0 50',
             width : 900,
             height : 600,
-            html : 'Choisir une recette.'
+            items : [{
+                xtype : 'panel',
+                html : 'Choisir une recette',
+                id : 'recipeButton',
+                margin : 20
+            },{
+                xtype : 'panel',
+                id : 'recipeText',
+                width : 880,
+            }]
         });
     }
 })

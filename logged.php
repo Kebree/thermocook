@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="thermocook/lib/extjs/resources/css/ext-neptune.css">
         <link rel="stylesheet" type="text/css" href="thermocook/Style/style.css">
 
-        <script type="text/javascript" src="thermocook/lib/extjs/ext-all.js"></script>
+        <script type="text/javascript" src="thermocook/lib/extjs/ext-all-debug.js"></script>
         <script type="text/javascript" src="thermocook/lib/extjs/examples/ux/form/field/tinymce/tiny_mce.js"></script>
 
         <!-- Main application -->
