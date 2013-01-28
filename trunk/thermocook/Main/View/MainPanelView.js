@@ -1,17 +1,20 @@
 var favList;
-var mygetrequest = new XMLHttpRequest();
-mygetrequest.open("GET", "/thermocook/lib/tc/getFavs.php", false);
-mygetrequest.onreadystatechange = function() {
-    if (mygetrequest.status == 200 && mygetrequest.readyState == 4) {
-        favList = mygetrequest.responseText;
+var favRequest = new XMLHttpRequest();
+favRequest.onreadystatechange = function() {
+    if (favRequest.status == 200 && favRequest.readyState == 4) {
+        favList = favRequest.responseText;
     } else {
         alert("An error has occured making the request");
     }
 };
 //load JSON data
-mygetrequest.send();
+favRequest.open("GET", "/thermocook/lib/tc/getFavs.php", false);
+favRequest.send();
 
-mainPanel = Ext.create('Ext.panel.Panel', {
+Ext.define('thermocook.Main.View.Main', {
+    extend : 'Ext.panel.Panel', 
+    alias : 'widget.mainPanel',
+    id : 'mainPanel',
     title : 'Bienvenue ' + username,
     margin : 5,
     layout : 'hbox',
@@ -27,9 +30,9 @@ mainPanel = Ext.create('Ext.panel.Panel', {
     }, {
         xtype : 'panel',
         title : 'Recettes favorites',
+        id : 'favList',
         layout: {
             type: 'table',
-            // The total column count must be specified here
             columns: 2
         },
         margin : 20,

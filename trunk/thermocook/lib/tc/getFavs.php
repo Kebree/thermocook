@@ -6,16 +6,20 @@ $query = sprintf("SELECT * FROM favourites JOIN recipe ON id_recipe=recipe.id WH
 $result = $connec -> executeQuery($query);
 while ($fav = mysql_fetch_assoc($result)) {
     $ret[] = sprintf("Ext.create('thermocook.Main.View.favourite',{
+    id : 'rec_%s',
     items : [{
         xtype : 'panel',
         html : '%s',
         flex : 1
     },{
         xtype : 'button',
-        text : 'Enlever'
+        text : 'Enlever',
+        listeners : {
+            click : Ext.bind(unfavorite, this, [%s, true])
+        }
     }]
     
-})", $fav["name"]);
+})", $fav["id_recipe"], $fav["name"], $fav["id_recipe"]);
 }
 
 
