@@ -2,12 +2,12 @@ Ext.define('thermocook.Recipes.View.ContextMenu', {
 	extend : 'Ext.menu.Menu',
 	alias : 'widget.recContextMenu',
 	items : [{
-		text : 'Edit',
+		text : 'Éditer',
 		handler : function() {
 			Ext.getCmp('recipesList').fireEvent('edit',this.up().config);
 		}
 	},{
-		text : 'Delete',
+		text : 'Supprimer',
 		handler : function() {
 			ctxtMenu = this.up();
 			Ext.MessageBox.confirm('Attention', 'Etes vous sûr de supprimer cette recette ?', function(btn) {

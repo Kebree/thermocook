@@ -202,7 +202,7 @@ if(isset($_SESSION['username'])) {
             <form action="index.php" method="post" onsubmit='encPass(this)'>
                 <div class="formGroup">
                     <div class="labl">
-                        <label>Username : </label>
+                        <label>Identifiant : </label>
                     </div>
                     <div class="field">
                         <input type="text" name="username" value=""/>
@@ -210,7 +210,7 @@ if(isset($_SESSION['username'])) {
                 </div>
                 <div class="formGroup">
                     <div class="labl">
-                        <label>Password : </label>
+                        <label>Mot de passe : </label>
                     </div>
                     <div class="field">
                         <input type="password" name="password" />
