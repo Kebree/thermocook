@@ -17,6 +17,13 @@ strong {
 	color: #136CB4;
 }
 
+.underTitle {
+    font-weight : bold;
+    font-size : 8pt;
+    margin-top : -10px !important;
+    margin-bottom : 10px !important;  
+}
+
 #recipeBody h2 {
 	font-size: 16pt;
 }

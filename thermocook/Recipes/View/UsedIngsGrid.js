@@ -22,7 +22,17 @@ Ext.define('thermocook.Recipes.View.UsedIngsGrid', {
     }],
     plugins: [
         Ext.create('Ext.grid.plugin.CellEditing', {
-            clicksToEdit: 2
+            clicksToEdit: 1
         })
-    ]
+    ],
+    listeners : {
+        cellclick : function(table, td, cellIndex, record, tr,rowIndex) {
+            quant = record.data.quantity;
+            if(isNaN(Number(quant)))
+            {
+                record.data.quantity = "";
+            }
+                
+        }
+    }
 })

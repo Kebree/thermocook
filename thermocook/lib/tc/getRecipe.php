@@ -2,8 +2,15 @@
 require_once 'db_link.php';
 $id = $_GET['id'];
 $name = $_GET['name'];
+
+$query = sprintf("SELECT * FROM recipe JOIN users ON autor=users.id WHERE recipe.id='%s'", $_GET['id']);
+$result = $connec -> executeQuery($query);
+$recipe = mysql_fetch_assoc($result);
+mysql_free_result($result);
+
 echo '<div id="recipeBody">';
 echo "<h1 class=\"recH1\"> $name </h1>";
+echo "<p class=\"underTitle\"> Ajoutée par ${recipe['login']} le ".date("d/m/o à H:i",strtotime($recipe['date']))."</p>";
 echo "<h2> Ingrédients </h2>";
 
 echo "<table class=\"ingTable\">";
@@ -18,10 +25,6 @@ echo "</table>";
 
 echo "<h2> Réalisation </h2>";
 echo '<div id="recText">';
-$query = sprintf("SELECT * FROM recipe WHERE id='%s'", $id = $_GET['id']);
-$result = $connec -> executeQuery($query);
-$row = mysql_fetch_assoc($result);
-mysql_free_result($result);
-echo utf8_encode($row['recipe']);
+echo utf8_encode($recipe['recipe']);
 echo '</div>';
 echo '</div>';

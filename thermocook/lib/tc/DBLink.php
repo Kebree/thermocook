@@ -40,11 +40,11 @@ class DBLink {
 
 	public function insert($table, $columns, $values) {
 		$args = array_combine($columns, $values);
-		$where = "";
+		$where = array();
 		foreach($args as $key=>$value){
-			$where .= "$key='$value' AND ";
+			$where[] = "$key='$value'";
 		}
-		$where = substr_replace($where ,"",-5);
+		$where = implode(" AND ", $where);
 		$query = sprintf("SELECT * FROM `%s` WHERE %s",
 			$table,
 			$where);
@@ -54,16 +54,16 @@ class DBLink {
 			return -2;
 		}
 		
-		$cols = '(';
+		$cols = array();
 		foreach($columns as $column){
-			$cols .= "`$column`,";
+			$cols[] = "`$column`";
 		}
-		$cols = substr_replace($cols ,"",-1).')';
-		$vals = '(';
+		$cols = '('.implode(',', $cols).')';
+		$vals = array();
 		foreach($values as $value){
-			$vals .= "'$value',";
+			$vals[] = "'$value'";
 		}
-		$vals = substr_replace($vals ,"",-1).')';
+		$vals = '('.implode(',', $vals).')';
 		$query = sprintf("INSERT INTO `%s` %s VALUES %s",
 			$table,
 			$cols,
@@ -73,11 +73,11 @@ class DBLink {
 	}
 	
 	public function select($table, $fields = array("*"), $limits = NULL, $sorter = NULL) {
-		$cols = '';
+		$cols = array();
 		foreach($fields as $field){
-			$cols .= "$field,";
+			$cols[] = "$field";
 		}
-		$cols = substr_replace($cols ,"",-1);
+		$cols = implode(",", $cols);
 		$limit = "";
 		if(isset($limits)){
 			$limit .= " LIMIT ".$limits['start'].",".$limits['end'];
@@ -101,11 +101,11 @@ class DBLink {
 	}
 
 	public function remove($table, $fields) {
-		$where = "";
+        $where = array();
 		foreach($fields as $key=>$value){
-			$where .= "$key='$value' AND ";
+			$where[] = "$key='$value'";
 		}
-		$where = substr_replace($where ,"",-5);
+        $where = implode(" AND ", $where);
 		$query = sprintf("DELETE FROM %s WHERE %s",
 			$table,
 			$where);

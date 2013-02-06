@@ -106,7 +106,7 @@ function unfavorite(id, isMain) {
             if (mygetrequest.status == 200 || window.location.href.indexOf("http") == -1) {
                 ret = mygetrequest.responseText
             } else {
-                alert("An error has occured making the request")
+                alert("Une erreur est apparue lors du chargement de la requête - Suppression d'une recette des favoris")
             }
         }
     };
@@ -136,7 +136,7 @@ function favorite(id) {
             if (mygetrequest.status == 200 || window.location.href.indexOf("http") == -1) {
                 ret = mygetrequest.responseText
             } else {
-                alert("An error has occured making the request")
+                alert("Une erreur est apparue lors du chargement de la requête - Ajout d'une recette dans les favoris")
             }
         }
     };
@@ -225,7 +225,7 @@ Ext.application({
                                 text : 'Mon compte'/*,
                                 handler : viewRecipeHandler*/
                             }, {
-                                text : 'Logout',
+                                text : 'Déconnexion',
                                 href : 'logout.php'
                             }]
                         }

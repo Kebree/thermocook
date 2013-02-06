@@ -1,14 +1,14 @@
 var favList;
 var favRequest = new XMLHttpRequest();
+favRequest.open("GET", "/thermocook/lib/tc/getFavs.php", false);
 favRequest.onreadystatechange = function() {
     if (favRequest.status == 200 && favRequest.readyState == 4) {
         favList = favRequest.responseText;
     } else {
-        alert("An error has occured making the request");
+        alert("Une erreur est apparue lors du chargement de la requête - Chargement des favoris");
     }
 };
 //load JSON data
-favRequest.open("GET", "/thermocook/lib/tc/getFavs.php", false);
 favRequest.send();
 
 Ext.define('thermocook.Main.View.Main', {
