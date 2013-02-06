@@ -62,4 +62,4 @@ Ext.define('thermocook.List.View.ConstructedListGrid', {
 		dataIndex : 'quantity',
 		width : 200
 	}]
-})
+});

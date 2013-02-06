@@ -14,11 +14,11 @@ Ext.define('thermocook.Recipes.View.AvailIngsGrid', {
     alias : 'widget.availIngsGrid',
 	features : [filters],
     remoteFilter : true,
-    width : 400,
+    width : 410,
     columns : [{
         header : 'Nom',
         dataIndex : 'name',
-        width : 375
+        width : 385
     },{
         header : 'Unité',
         dataIndex : 'measure',
