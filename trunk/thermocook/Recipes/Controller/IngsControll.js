@@ -20,6 +20,16 @@ Ext.define('thermocook.Recipes.Controller.IngsControll', {
 				render : function(c) {
 					c.store.loadPage(1);
 				},
+				itemdblclick : function(grid, record) {
+				    grid.store.remove(record);
+				    gridDist = Ext.getCmp('usedIngsGrid');
+                    gridDist.fireEvent("drop2",record,Ext.getCmp('nameRec').getValue());
+                    gridDist.store.add(record);
+                },
+                drop2 : function(record, rec) {
+                    mygetrequest.open("GET", "thermocook/lib/tc/manageIngredient.php?action=remove&id_ing=" + record.data.id + "&rec_name=" + rec, false)
+                    mygetrequest.send(null)
+                },
 				drop : function(data, rec) {
 					mygetrequest.open("GET", "thermocook/lib/tc/manageIngredient.php?action=remove&id_ing=" + data.records[0].data.id + "&rec_name=" + rec, false)
 					mygetrequest.send(null)
@@ -29,10 +39,20 @@ Ext.define('thermocook.Recipes.Controller.IngsControll', {
 				render : function(c) {
 					c.store.load();
 				},
-				drop : function(data, rec) {
-					mygetrequest.open("GET", "thermocook/lib/tc/manageIngredient.php?action=add&id_ing=" + data.records[0].data.id + "&rec_name=" + rec, false)
+                drop : function(data, rec) {
+                    mygetrequest.open("GET", "thermocook/lib/tc/manageIngredient.php?action=add&id_ing=" + data.records[0].data.id + "&rec_name=" + rec, false)
+                    mygetrequest.send(null)
+                },
+				drop2 : function(record, rec) {
+					mygetrequest.open("GET", "thermocook/lib/tc/manageIngredient.php?action=add&id_ing=" + record.data.id + "&rec_name=" + rec, false)
 					mygetrequest.send(null)
 				},
+                itemdblclick : function(grid, record) {
+                    grid.store.remove(record);
+                    gridDist = Ext.getCmp('availIngsGrid');
+                    gridDist.fireEvent("drop2",record,Ext.getCmp('nameRec').getValue());
+                    gridDist.store.add(record);
+                },
 				edit : function(editor, e) {
 					recName = Ext.getCmp('nameRec').getValue();
 					ingID = e.record.data.id;

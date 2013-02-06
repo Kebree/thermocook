@@ -62,7 +62,8 @@ if(isset($_POST["username"]))
     }
 }
 if(isset($_SESSION['username'])) {
-    require('logged.php');
+    header("HTTP/1.1 303 See Other");
+    header("Location: index2.php");
 } else {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
