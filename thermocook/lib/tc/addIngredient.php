@@ -1,5 +1,6 @@
 <?php
 include_once 'db_link.php';
+
 $params = explode("&",file_get_contents('php://input'));
 $params2= array();
 foreach ($params as $key => $value) {
@@ -8,7 +9,7 @@ foreach ($params as $key => $value) {
 }
 $params = $params2;
 
-$name = urldecode($params["name"]);
+$name = utf8_decode(urldecode($params["name"]));
 if(isset($params["measure"]))
 	$measure = urldecode($params["measure"]);
 else {

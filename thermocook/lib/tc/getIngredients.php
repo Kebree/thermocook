@@ -1,5 +1,6 @@
 <?php
 include_once 'db_link.php';
+header('Content-Type: text/html; charset=iso-8859-1');
 
 $start = $_GET['start'];
 $end = $start + $_GET['limit'];
